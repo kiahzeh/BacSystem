@@ -3,95 +3,124 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
   }
   
   body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #00b894, #00cec9);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #00b894, #00cec9);
+    min-height: 100vh;
   }
   
   /* Login Container */
   .login-container {
-    background-color: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
   }
   
   h1 {
-    margin-bottom: 20px;
+    text-align: center;
     color: #00b894;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+  }
+  
+  .error-message {
+    background: #ffebee;
+    color: #c62828;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
   }
   
   label {
     display: block;
-    margin-top: 10px;
-    font-weight: bold;
-    color: #333;
+    color: #2d3436;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
   }
   
   input {
     width: 100%;
-    padding: 12px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    padding: 0.75rem;
+    border: 1px solid #dfe6e9;
+    border-radius: 6px;
     font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
   
-  /* Button */
+  input:focus {
+    outline: none;
+    border-color: #00b894;
+    box-shadow: 0 0 0 2px rgba(0, 184, 148, 0.1);
+  }
+  
   button {
-    background-color: #00b894;
+    width: 100%;
+    padding: 0.75rem;
+    background: #00b894;
     color: white;
     border: none;
-    padding: 12px;
+    border-radius: 6px;
     font-size: 1rem;
-    border-radius: 8px;
     cursor: pointer;
-    width: 100%;
+    transition: background 0.2s;
+    position: relative;
   }
   
   button:hover {
-    background-color: #00cec9;
+    background: #00a884;
   }
   
-  /* Error Message */
-  .error-message {
-    margin-top: 15px;
-    color: #e74c3c;
-    font-weight: bold;
+  button:disabled {
+    background: #b2bec3;
+    cursor: not-allowed;
+  }
+  
+  .loading-spinner {
+    display: inline-block;
+  }
+  
+  p {
+    text-align: center;
+    color: #636e72;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
   }
   
   /* Google Login Button */
-.google-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 12px;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 100%;
-  margin-top: 10px;
-  color: #333;
-}
-
-.google-btn img {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
-
-.google-btn:hover {
-  background-color: #f2f2f2;
-}
+  .google-btn {
+    background: white;
+    color: #2d3436;
+    border: 1px solid #dfe6e9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-weight: 500;
+  }
+  
+  .google-btn:hover {
+    background: #f5f6fa;
+  }
+  
+  .google-btn img {
+    width: 18px;
+    height: 18px;
+  }
