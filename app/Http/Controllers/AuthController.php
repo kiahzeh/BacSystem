@@ -15,6 +15,14 @@ class AuthController extends Controller
         $this->authService = $authService;
     }
 
+    /**
+     * Apply middleware to rate limit login attempts
+     */
+    public function __invoke()
+    {
+        $this->middleware('throttle:6,1', ['only' => ['login', 'showLoginForm']]);
+    }
+
     // Show login page
     public function showLoginForm()
     {

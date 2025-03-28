@@ -11,7 +11,7 @@ Route::get('/about', function () {
     return view('pages.admin-dashboard');
 });
 // Authentication routes
-Route::middleware('guest')->group(function () {
+Route::middleware(['guest', 'throttle:6,1'])->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);
 });
@@ -19,7 +19,7 @@ Route::middleware('guest')->group(function () {
 // Protected routes
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
-        return view('pages.admin-dashboard');
-    });
+        return view('pages.dashboard');
+    })->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

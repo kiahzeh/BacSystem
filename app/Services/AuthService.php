@@ -53,6 +53,25 @@ class AuthService
 
     public function isAuthenticated()
     {
-        return session()->has('token');
+        if (!session()->has('token') || !session()->has('user')) {
+            return false;
+        }
+
+        try {
+            // Verify token is still valid with API
+            $response = Http::withToken(session('token'))
+                ->get($this->baseUrl . '/auth/verify');
+
+            if (!$response->successful()) {
+                session()->forget(['token', 'user']);
+                return false;
+            }
+
+            return true;
+        } catch (Exception $e) {
+            // If we can't verify, err on the side of requiring re-login
+            session()->forget(['token', 'user']);
+            return false;
+        }
     }
 }
